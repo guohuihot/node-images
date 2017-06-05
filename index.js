@@ -51,7 +51,11 @@ function WrappedImage(width, height) {
 
 prototype = {
     loadFromBuffer: function(buffer, start, end) {
-        this._handle.loadFromBuffer(buffer, start, end);
+        try {
+            this._handle.loadFromBuffer(buffer, start, end);
+        } catch (err) {
+            console.log(err);
+        }
     },
     copyFromImage: function(img, x, y, width, height) {
         if (img instanceof WrappedImage) {
